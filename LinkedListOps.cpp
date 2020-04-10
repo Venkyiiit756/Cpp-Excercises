@@ -102,9 +102,24 @@ struct Node
             }
             end = tPtr;
         }
-        
     }
     
+    void reverse2()
+    {
+        Node* cur = m_head;
+        Node* prev = nullptr;
+        Node* later = nullptr;
+        
+        while(cur != nullptr)
+        {
+            later = cur -> m_next;
+            cur -> m_next = prev;
+            prev = cur;
+            cur = later;
+        }
+        
+        m_head = prev;
+    }
     
     void deleteNodeByValue(int p_data)
     {
@@ -150,6 +165,8 @@ int main()
     list.deleteNodeByValue(1);
     list.deleteNodeByiValue(10);
     list.deleteNodeByValue(14);
+    list.printList();
+    list.reverse2();
     list.printList();
     
 }
