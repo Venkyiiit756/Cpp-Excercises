@@ -43,7 +43,6 @@ struct Node
             ptr = ptr -> m_next;    
         }
         
-        std::cout << "Sad!\n";
         ptr -> m_next = temp;
         temp -> m_next = nullptr;
     }
@@ -144,6 +143,29 @@ struct Node
         
         delete cur;
     }
+    
+    void deleteNodeWithoutHead(Node* ptr) 
+    {
+        
+        if(ptr == nullptr)
+        {
+           //delete ptr; 
+            return;
+        }
+        else if( ptr -> m_next == nullptr)
+        {
+            std::cout << "This is last node, hence it can't be deleted with the head" << std::endl;
+            return;
+        }
+        else
+        {
+            ptr->m_data = (ptr->m_next)->m_data;
+            Node* prev = ptr;
+            ptr = ptr->m_next;
+            prev->m_next = ptr->m_next;
+            delete ptr;
+        }
+    }
         
 };
 
@@ -163,10 +185,14 @@ int main()
     list.printList();
     
     list.deleteNodeByValue(1);
-    list.deleteNodeByiValue(10);
+    list.deleteNodeByValue(10);
     list.deleteNodeByValue(14);
     list.printList();
     list.reverse2();
+    list.printList();
+    
+    list.deleteNodeWithoutHead(list.m_head->m_next); 
+    list.deleteNodeWithoutHead(list.m_head->m_next); 
     list.printList();
     
 }
