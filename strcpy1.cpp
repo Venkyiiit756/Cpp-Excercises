@@ -8,6 +8,10 @@ void strcpy1(char* dest , const char* source)
 		dest[i] = source[i];
         i++;
 	}
+	//Add the null character at the end
+	dest[i] = '\0';
+	// Above can be reduce to below single statement
+	//while((dest[i++] = source[i]) != '\0');
 }
 
 int main()
