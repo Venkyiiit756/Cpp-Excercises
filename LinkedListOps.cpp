@@ -80,15 +80,19 @@ struct Node
             end = end -> m_next;
         } 
         
+        // For oddlength list loop will break 
+        // when start is equal to end
         while(start != end)
         {
+           // Stop the loop when start and end cross each other
+           // this condition is applicable for even list
            if(end -> m_next == start) 
            {
                 break;    
            }
             // Swap the start and end  
             int temp = start -> m_data;
-            start -> m_data = end -> m_data;
+            start -> m_data = end -> r -> m_next m_data;
             end -> m_data = temp;
             
             // Increment the start and decrement the end
